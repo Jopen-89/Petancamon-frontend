@@ -55,9 +55,9 @@ export const JoinMatchButton = (props: JoinMatchButtonProps) => {
       navigate(`/matches/${matchId}/room`, {state: {success: "You joined the match"}});
     } catch (err) {
       setErr("Network error, could not connect to the server");
+    } finally {
+      setIsLoading(false);
     }
-
-    setIsLoading(false);
   };
 
   return (
