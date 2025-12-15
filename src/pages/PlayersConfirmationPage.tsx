@@ -18,8 +18,8 @@ type Attendance = {
   player: string;
   playersYes: string[];
   playersNo: string[];
-  yesCount: number,
-  noCount: number,
+  yesCount: number;
+  noCount: number;
 };
 
 type Match = {
@@ -214,70 +214,65 @@ export const PlayersConfirmationPage = () => {
     return null;
   };*/
 
-
   //necesito attendance del userid// luego hasYEs y hasNo// uso attendancePlayer
-
-
-
-
 
   return (
     <>
       <h2 className="text-white">PLAYER CONFIRMATION</h2>
 
-      
       <div className="flex justify-around">
-      <div>
-      <button
-        className="px-4 py2 bg-blue-600 text-white rounded hover:bg-blue-700 cursor-pointer"
-        onClick={handleclickSelf}
-      >
-        {!selfAttendance ? "Selfconfirmation" : "Confirmed"}
-      </button>
-
-      {form.targetsPlayersId?.map((tp, i) => (
-        <div key={i}>
-          <p>Player:{tp.PlayerId}</p>
-
-          <select className="text-black bg-white" value={tp.vote} onChange={(e) => handleChangePeer(e, i)}>
-            <option value="">Select...</option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-          </select>
+        <div>
           <button
-            type="submit"
-            onClick={() => handlePeerConfirmation(i)}
             className="px-4 py2 bg-blue-600 text-white rounded hover:bg-blue-700 cursor-pointer"
+            onClick={handleclickSelf}
           >
-            confirmation
+            {!selfAttendance ? "Selfconfirmation" : "Confirmed"}
           </button>
+
+          {form.targetsPlayersId?.map((tp, i) => (
+            <div key={i}>
+              <p>Player:{tp.PlayerId}</p>
+
+              <select
+                className="text-black bg-white"
+                value={tp.vote}
+                onChange={(e) => handleChangePeer(e, i)}
+              >
+                <option value="">Select...</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+              <button
+                type="submit"
+                onClick={() => handlePeerConfirmation(i)}
+                className="px-4 py2 bg-blue-600 text-white rounded hover:bg-blue-700 cursor-pointer"
+              >
+                confirmation
+              </button>
+            </div>
+          ))}
         </div>
-      ))}
-      </div>
-      
 
         <div>
-        <table className="border-2">
-          <thead>
-            <tr>
-              <th className="border border-gray-500 px-4 py-2">Player</th>
-              <th className="border border-gray-500 px-4 py-2">VoteYes</th>             
-              <th className="border border-gray-500 px-4 py-2">VoteNo</th>
-            </tr>
-          </thead>
-          <tbody>
-            {match.attendance.map((m, i) =>  (         
-            <tr key={i}>
-              <td>{m.player}</td>
-              <td>{m.yesCount}</td>
-              <td>{m.noCount}</td>
+          <table className="border-2">
+            <thead>
+              <tr>
+                <th className="border border-gray-500 px-4 py-2">Player</th>
+                <th className="border border-gray-500 px-4 py-2">VoteYes</th>
+                <th className="border border-gray-500 px-4 py-2">VoteNo</th>
               </tr>
-            )) }
-              
-
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              {match.attendance.map((m, i) => (
+                <tr key={i}>
+                  <td>{m.player}</td>
+                  <td>{m.yesCount}</td>
+                  <td>{m.noCount}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </>
   );
