@@ -17,6 +17,11 @@ import { MatchRoomGuard } from "./components/MatchRoomGuard";
 import { UpdateMatchPage } from "./pages/UpdateMatchPage";
 import { ProfilePage } from "./pages/ProfilePage";
 import { PlayersConfirmationPage } from "./pages/PlayersConfirmationPage";
+import { TestMapPage } from "./components/TestMapPage";
+import { DashBoardPage } from "./pages/DashBoardPage";
+import { LeaguePage } from "./pages/LeaguePage";
+import { CreateLeaguePage } from "./pages/CreateLeaguePage";
+import { LeagueDetailsPage } from "./pages/LeagueDetailsPage";
 
 const App = () => {
   return (
@@ -32,7 +37,15 @@ const App = () => {
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/signup/evaluation" element={<SignupEvaluation />} />
           <Route path="/profile" element={<ProfilePage />} />
-
+          <Route path="/dashboard" element={<DashBoardPage />} />
+          <Route
+            path="/googlemap"
+            element={
+              <PrivateRoute>
+                <TestMapPage />
+              </PrivateRoute>
+            }
+          />
 
           <Route
             path="/matches"
@@ -73,16 +86,15 @@ const App = () => {
           />
 
           <Route
-          path="/matches/:matchId/room/confirmation"
-          element={
-            <PrivateRoute>
-              <MatchRoomGuard>
-                <PlayersConfirmationPage/>
-              </MatchRoomGuard>
-            </PrivateRoute>
-          }>
-            
-          </Route>
+            path="/matches/:matchId/room/confirmation"
+            element={
+              <PrivateRoute>
+                <MatchRoomGuard>
+                  <PlayersConfirmationPage />
+                </MatchRoomGuard>
+              </PrivateRoute>
+            }
+          ></Route>
 
           <Route
             path="/matches/:matchId/update"
@@ -92,6 +104,11 @@ const App = () => {
               </PrivateRoute>
             }
           />
+
+          <Route path="/leagues" element={<LeaguePage />} />
+          <Route path={"/league"} element={<CreateLeaguePage />} />
+
+          <Route path={"/league/:leagueId"} element={<LeagueDetailsPage />} />
         </Routes>
       </main>
     </div>
