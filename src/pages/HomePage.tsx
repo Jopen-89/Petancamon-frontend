@@ -24,8 +24,14 @@ export const HomePage = () => {
           <p className="text-green-600 font-semibold">{successMessage}</p>
         )}
       </div>
+
       <h2 className="flex justify-center">Bienvenido a Petancamon</h2>
-      <Link to={"/profile"}>Go to Profile</Link>
+      <div className="flex justify-center gap-4">
+        <Link to={"/profile"}>Profile</Link>
+        <Link to={"/googlemap"}>Map</Link>
+        <Link to={"/dashboard"}>Dashboard</Link>
+        <Link to={"/leagues"}>Leagues</Link>
+      </div>
     </>
   );
 };
