@@ -26,10 +26,13 @@ export const MatchesPage = () => {
   const deleteMessage = location.state?.success;
 
   useEffect(() => {
-    if (!deleteMessage) {return}
-  const timer = setTimeout(() => {
-    navigate(".", {state: ""})
-  }, 3000)})
+    if (!deleteMessage) {
+      return;
+    }
+    const timer = setTimeout(() => {
+      navigate(".", { state: "" });
+    }, 3000);
+  });
 
   useEffect(() => {
     if (isAuthLoading) {
@@ -77,13 +80,10 @@ export const MatchesPage = () => {
 
   if (err) return <p>{err}</p>;
 
-
-  const MatchesAvailable = (matches.length === 0)
-
+  const MatchesAvailable = matches.length === 0;
 
   return (
     <>
-      
       <header>
         <h2 className="bg-green-500 text-black">Matches List</h2>
         <Link
@@ -102,18 +102,19 @@ export const MatchesPage = () => {
         {matches.length === 0 ? (
           <p className="text-white">No matches available</p>
         ) : (
-        matches.map((m) => (
-          <div className="bg-white text-black" key={m.id}>
-            <Link to={`/matches/${m.id}`}>
-              <ul>Match (details)</ul>
-              <li>Creator: {m.creator}</li>
-              <li>Level: {m.level}</li>
-              <li>Location: {m.location}</li>
-              <li>Status: {m.status}</li>
-              <li>maxPlayers: {m.maxPlayers}</li>
-            </Link>
-          </div>
-        )))}
+          matches.map((m) => (
+            <div className="bg-white text-black" key={m.id}>
+              <Link to={`/matches/${m.id}`}>
+                <ul>Match (details)</ul>
+                <li>Creator: {m.creator}</li>
+                <li>Level: {m.level}</li>
+                <li>Location: {m.location?.courtName}</li>
+                <li>Status: {m.status}</li>
+                <li>maxPlayers: {m.maxPlayers}</li>
+              </Link>
+            </div>
+          ))
+        )}
       </div>
     </>
   );
