@@ -126,7 +126,7 @@ export const MatchDetails = () => {
       <p>MatchId: {match?.id}</p>
       <p>Creator: {match?.creator}</p>
       <p>Level: {match?.level}</p>
-      <p>Location: {match?.location}</p>
+      
       <p>MaxPlayers:{match?.maxPlayers}</p>
       <p>Status: {match?.status}</p>
     </>
