@@ -1,5 +1,7 @@
+import type { ReactNode } from "react";
+
 type HeaderProps = {
-  children: any;
+  children: ReactNode;
 };
 
 export const Header = ({ children }: HeaderProps) => {

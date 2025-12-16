@@ -18,7 +18,7 @@ export const Navbar = () => {
       {accessToken && (
         <>
           <Link to="/matches">Matches</Link>
-          <Link to="/matches/new"></Link>
+          <Link to="/matches/new">Create match</Link>
         </>
       )}
 

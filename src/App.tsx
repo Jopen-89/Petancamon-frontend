@@ -6,7 +6,6 @@ import { HomePage } from "./pages/HomePage";
 import { LoginPage } from "./pages/LoginPage";
 import { MatchesPage } from "./pages/MatchesPage";
 import { MatchDetails } from "./pages/MatchDetails";
-import { Link } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import { PrivateRoute } from "./components/PrivateRoute";
 import { CreateMatchPage } from "./pages/CreateMatchPage";
@@ -22,10 +21,12 @@ import { DashBoardPage } from "./pages/DashBoardPage";
 import { LeaguePage } from "./pages/LeaguePage";
 import { CreateLeaguePage } from "./pages/CreateLeaguePage";
 import { LeagueDetailsPage } from "./pages/LeagueDetailsPage";
+import { AuthProvider } from "./context/AuthContext";
 
 const App = () => {
   return (
     <div className="min-h-screen bg-slate-900 text-white">
+      <AuthProvider>
       <Header>
         <Navbar />
       </Header>
@@ -111,6 +112,7 @@ const App = () => {
           <Route path={"/league/:leagueId"} element={<LeagueDetailsPage />} />
         </Routes>
       </main>
+      </AuthProvider>
     </div>
   );
 };
